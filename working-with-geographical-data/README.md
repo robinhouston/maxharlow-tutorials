@@ -33,7 +33,7 @@ Then follow the instructions [on its website] (https://chocolatey.org/install) t
 
 From PowerShell you can then install Cygwin, Node, and Make:
 
-    > choco install cygwin nodejs make
+    > choco install cygwin nodejs make curl unzip
 
 You'll have to press `Y` to confirm a few times. Next, close PowerShell and open Cygwin from the Start menu. Lastly, we need to set Cygwin to use your Windows home directory:
 
@@ -392,6 +392,8 @@ london-8.topo.json: london-7.topo.json
 
 This uses `toposimplify`, again from the `topojson` tools. We pass it the argument `--planar-area 2`, which indicates the amount we want our map simplified -- bigger numbers mean more simplification, so smaler files, but less precise geometry.
 
+>>> todo -- check that 2 is the value we want -- and larger number == simpler, or vice-versa?!
+
 List the files in your project folder, so we can see how much that has reduced the size of our data.
 
 *(Step 9)*
@@ -526,3 +528,10 @@ path.selected {
     fill: maroon;
 }
 ```
+
+
+Challenge: Creating a ward map instead
+--------------------------------------
+
+use the wards data instead
+join with a different dataset?
