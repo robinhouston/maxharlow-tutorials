@@ -61,8 +61,8 @@ data/london-7.topo.json: data/london-6.ndjson
 data/london-8.topo.json: data/london-7.topo.json
 	toposimplify \
 		--planar-area 2 \
-		-o "$@" $^
+		-o "$@" "$<"
 
 data/london-9.topo.json: data/london-8.topo.json
 	topoquantize 1e3 \
-		-o "$@" $^
+		-o "$@" "$<"

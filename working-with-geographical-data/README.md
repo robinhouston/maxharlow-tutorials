@@ -33,7 +33,7 @@ Then follow the instructions [on its website] (https://chocolatey.org/install) t
 
 From PowerShell you can then install Cygwin, Node, and Make:
 
-    > choco install cygwin nodejs make
+    > choco install cygwin nodejs make curl unzip
 
 You'll have to press `Y` to confirm a few times. Next, close PowerShell and open Cygwin from the Start menu. Lastly, we need to set Cygwin to use your Windows home directory:
 
@@ -392,6 +392,8 @@ london-8.topo.json: london-7.topo.json
 
 This uses `toposimplify`, again from the `topojson` tools. We pass it the argument `--planar-area 2`, which indicates the amount we want our map simplified -- bigger numbers mean more simplification, so smaler files, but less precise geometry.
 
+>>> todo -- check that 2 is the value we want -- and larger number == simpler, or vice-versa?!
+
 List the files in your project folder, so we can see how much that has reduced the size of our data.
 
 *(Step 9)*
@@ -499,7 +501,13 @@ Next, we need to deal with our data. Though we converted it to TopoJson to get a
 
 Finally we append a new group, or `<g>` element, to the `<svg>`, and we tell it how it should be transformed based on the variables we calculated. We then create new `<path>` elements, which will contain the geometries for each of our boroughs. For each path we add three listeners. The first, when the mouse moves over a borough, adds a new 'selected' class, the second removes that class when the mouse moves out of that borough. The third is triggered when you click on a borough -- that extracts the name and income median value from our data, and then inserts them into the empty `<h2>` element in our HTML.
 
-Open the HTML file up in your browser, and let's see what it looks like. You should see a map of London! Click on a borough, you should see the name of that borough, and the median income figure appear below the title. Resize your browser, and the map should resize too.
+Now we need to serve up these files so we can see them in our browser. There are lots of ways of doing this, but we're going to use Python:
+
+    $ python -m SimpleHTTPServer 8000
+
+(If you're using Windows you will need to run `choco install python` first.)
+
+Open your browser to `localhost:8000`, and let's see what it looks like. You should see a map of London! Click on a borough, you should see the name of that borough, and the median income figure appear below the title. Resize your browser, and the map should resize too.
 
 It's a bit ugly though? Create a `map.css` file, and let's add some style:
 
@@ -520,3 +528,10 @@ path.selected {
     fill: maroon;
 }
 ```
+
+
+Challenge: Creating a ward map instead
+--------------------------------------
+
+use the wards data instead
+join with a different dataset?
