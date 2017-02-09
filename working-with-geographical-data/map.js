@@ -1,5 +1,5 @@
 function visualise() {
-    d3.json('london-9.topo.json', (error, data) => {
+    d3.json('data/london-9.topo.json', (error, data) => {
         if (error) return console.error(error)
         var target = 'main'
         var sizeRatio = 0.8 // approximate ratio for London
